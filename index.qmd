@@ -5,26 +5,10 @@ author: "Kyle Mandli"
 date: 2026-03-20
 format:
   revealjs:
-    theme: dark
+    theme: dracula
     footer: "GeoClaw Workshop 2026"
     smaller: false
 ---
-
-<!-- ## From Examples to Experiments
-### Reproducible workflows in GeoClaw
-
-Kyle Mandli  
-GeoClaw Users' Workshop 2026
-
-::: notes
-Today I want to show a slightly different way to think about using GeoClaw.
-
-This is not really a talk about testing frameworks.
-It is about making it easier to trust, reuse, and scale the simulations that people are already running.
-
-[Sources]
-- Workshop page: https://www.clawpack.org/geoclaw-users-2026/
-::: -->
 
 ## How we actually use GeoClaw
 
@@ -33,7 +17,7 @@ It is about making it easier to trust, reuse, and scale the simulations that peo
 ::: notes
 I think this is how a lot of us actually use GeoClaw.
 
-We start from an example, tweak a few parameters, run it, look at the plots, and then repeat.
+We start from an example, tweak a few parameters, run it, look at the plots, and then repeat.  And at some point you have a directory full of runs like run_final_v3_really_final…
 
 Maybe we change the resolution, or the topography, or the forcing.
 That works really well for exploration.
@@ -75,9 +59,9 @@ And we want to scale from a single run to multiple experiments without everythin
 ::: notes
 A useful way to think about this is as a simple loop.
 
-Define a setup, run the simulation, compare the results, and repeat.
+**Define** a setup, **run** the simulation, **compare** the results, and **repeat**.
 
-The key difference is that comparison is now explicit.
+The key shift is: make that compare step explicit.
 Once that step is explicit, you can automate it.
 And once you can automate it, you can scale it.
 :::
@@ -96,7 +80,9 @@ The key shift is very simple.
 
 Instead of treating runs as one-off experiments, we treat them as repeatable checks.
 
-At that point, testing tools are useful not because we want to turn everyone into developers, but because they already solve the organizational problem.
+At that point, testing tools are useful not because we want to turn everyone into developers, but because they already solve the organizational problem.  
+
+You don’t need to adopt `pytest` as a framework—this is just using it as a lightweight tool.
 :::
 
 ## A GeoClaw test in practice
@@ -147,8 +133,11 @@ The bowl-slosh test is a nice compact example.
 
 It generates the topography programmatically, runs a short GeoClaw simulation, and then compares both a gauge time series and fgmax output.
 
-So this is already more than “did the code run?”
+This is already more than “did the code run?”
 It is checking outputs that users actually care about.
+
+So that’s one clean, controlled example. Now let’s take the same idea and scale
+it up.
 
 [Sources]
 - Adapted from uploaded file: test_bowl_slosh.py
