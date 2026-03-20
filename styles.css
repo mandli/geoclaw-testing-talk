@@ -1,0 +1,86 @@
+:root {
+  --gc-blue: #1f5aa6;
+  --gc-cyan: #2b9dbf;
+  --gc-green: #2f855a;
+  --gc-gray: #5f6b7a;
+  --gc-soft: #eef4fb;
+  --gc-soft-2: #f5f8fc;
+}
+
+.reveal {
+  font-size: 34px;
+}
+
+.reveal .slides section {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  color: var(--gc-blue);
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.reveal h2 {
+  margin-bottom: 0.5em;
+}
+
+.reveal .subtitle,
+.reveal .date,
+.reveal .author {
+  color: var(--gc-gray);
+}
+
+.reveal blockquote {
+  width: 100%;
+  margin: 0.6em 0 0.8em 0;
+  padding: 0.5em 0.8em;
+  background: var(--gc-soft);
+  border-left: 6px solid var(--gc-cyan);
+  box-shadow: none;
+  color: #17324d;
+}
+
+.reveal ul {
+  margin-top: 0.3em;
+}
+
+.reveal li {
+  margin: 0.35em 0;
+}
+
+.small-code pre,
+.small-code code {
+  font-size: 0.8em !important;
+}
+
+.reveal pre {
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #d7e2ef;
+  border-radius: 14px;
+}
+
+.reveal pre code {
+  max-height: 480px;
+  line-height: 1.28;
+  padding: 1em;
+}
+
+.reveal .columns {
+  align-items: center;
+}
+
+.reveal .smaller {
+  font-size: 0.82em;
+}
+
+.reveal .footer {
+  color: var(--gc-gray);
+}
+
+.reveal .progress {
+  color: var(--gc-cyan);
+}
