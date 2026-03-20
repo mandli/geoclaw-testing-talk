@@ -1,0 +1,23 @@
+project:
+  output-dir: docs
+  render:
+    - index.qmd
+
+format:
+  revealjs:
+    theme: default
+    slide-number: c/t
+    progress: true
+    transition: fade
+    navigation-mode: linear
+    controls: true
+    center: false
+    preview-links: auto
+    css: styles.css
+    code-overflow: wrap
+    toc: false
+
+execute:
+  freeze: auto
+
+editor: source
