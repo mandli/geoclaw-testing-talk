@@ -96,7 +96,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-e98e8d8d57a510b8cb0be1501e7a774d.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-4672a6d53a7f172c9e50360c0960cbcc.css">
   <link rel="stylesheet" href="styles.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -208,30 +208,12 @@ Kyle Mandli
 
   <p class="date">2026-03-20</p>
 </section>
-<section class="slide level2">
-
-<!-- ## From Examples to Experiments
-### Reproducible workflows in GeoClaw
-
-Kyle Mandli  
-GeoClaw Users' Workshop 2026
-
-::: notes
-Today I want to show a slightly different way to think about using GeoClaw.
-
-This is not really a talk about testing frameworks.
-It is about making it easier to trust, reuse, and scale the simulations that people are already running.
-
-[Sources]
-- Workshop page: https://www.clawpack.org/geoclaw-users-2026/
-::: -->
-</section>
 <section id="how-we-actually-use-geoclaw" class="slide level2">
 <h2>How we actually use GeoClaw</h2>
 
 <img data-src="assets/current-workflow.svg" style="width:98.0%" class="r-stretch"><aside class="notes">
 <p>I think this is how a lot of us actually use GeoClaw.</p>
-<p>We start from an example, tweak a few parameters, run it, look at the plots, and then repeat.</p>
+<p>We start from an example, tweak a few parameters, run it, look at the plots, and then repeat. And at some point you have a directory full of runs like run_final_v3_really_final…</p>
 <p>Maybe we change the resolution, or the topography, or the forcing. That works really well for exploration.</p>
 <p>But the moment we want to compare runs carefully, or come back later, things can get messy.</p>
 <style type="text/css">
@@ -295,8 +277,8 @@ It is about making it easier to trust, reuse, and scale the simulations that peo
 
 <img data-src="assets/reproducible-loop.svg" style="width:100.0%" class="r-stretch"><aside class="notes">
 <p>A useful way to think about this is as a simple loop.</p>
-<p>Define a setup, run the simulation, compare the results, and repeat.</p>
-<p>The key difference is that comparison is now explicit. Once that step is explicit, you can automate it. And once you can automate it, you can scale it.</p>
+<p><strong>Define</strong> a setup, <strong>run</strong> the simulation, <strong>compare</strong> the results, and <strong>repeat</strong>.</p>
+<p>The key shift is: make that compare step explicit. Once that step is explicit, you can automate it. And once you can automate it, you can scale it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -324,6 +306,7 @@ It is about making it easier to trust, reuse, and scale the simulations that peo
 <p>The key shift is very simple.</p>
 <p>Instead of treating runs as one-off experiments, we treat them as repeatable checks.</p>
 <p>At that point, testing tools are useful not because we want to turn everyone into developers, but because they already solve the organizational problem.</p>
+<p>You don’t need to adopt <code>pytest</code> as a framework—this is just using it as a lightweight tool.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -384,7 +367,8 @@ It is about making it easier to trust, reuse, and scale the simulations that peo
 <aside class="notes">
 <p>The bowl-slosh test is a nice compact example.</p>
 <p>It generates the topography programmatically, runs a short GeoClaw simulation, and then compares both a gauge time series and fgmax output.</p>
-<p>So this is already more than “did the code run?” It is checking outputs that users actually care about.</p>
+<p>This is already more than “did the code run?” It is checking outputs that users actually care about.</p>
+<p>So that’s one clean, controlled example. Now let’s take the same idea and scale it up.</p>
 <p>[Sources] - Adapted from uploaded file: test_bowl_slosh.py</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
